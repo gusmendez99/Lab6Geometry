@@ -34,10 +34,10 @@ class Triangle: Drawable, Describible  {
     override fun requestDescription() {
         print("- Ingrese la altura: ")
         val heightStr = readLine()
-        if(heightStr != null){
+        if(heightStr != null){ //Solamente si la altura no esta vacia
             height = heightStr.trim().toInt()
         } else {
-            //TODO: Hacer un do-while como validador
+            println("Altura invalido, intente de nuevo")
         }
     }
 

@@ -1,3 +1,4 @@
+import behaviors.Describible
 import behaviors.Drawable
 import figures.Rectangle
 import figures.Square
@@ -35,31 +36,31 @@ fun main (args: Array<String>) {
         print("Ingrese una opcion: ")
         val strOption = readLine()!!
         val option = strOption.toInt()
-        if (isOnMainMenu) {
+        if (isOnMainMenu) { //MENU PRINCIPAL
             when (option) {
                 1 -> {
-                    isOnMainMenu = false
+                    isOnMainMenu = false //Se sale del Main menu para el submenu
                 }
                 2 -> {
                     wantsToContinue = false
                 }
             }
-        } else {
+        } else { //SUBMENU
             when (option) {
                 1 -> {
-                    val square = Square()
-                    square.requestDescription()
-                    drawFigure(square)
+                    val square = Square() //Instancia de Cuadrado
+                    requestFigureDescription(square)
+                    drawFigure(square) //Pasando el objeto que implementa Drawable
                 }
                 2 -> {
-                    val rectangle = Rectangle()
-                    rectangle.requestDescription()
-                    drawFigure(rectangle)
+                    val rectangle = Rectangle() //Instancia de Rectangulo
+                    requestFigureDescription(rectangle)
+                    drawFigure(rectangle) //Pasando el objeto que implementa Drawable
                 }
                 3 -> {
-                    val triangle = Triangle()
-                    triangle.requestDescription()
-                    drawFigure(triangle)
+                    val triangle = Triangle() //Instancia de Triangulo
+                    requestFigureDescription(triangle)
+                    drawFigure(triangle) //Pasando el objeto que implementa Drawable
                 }
                 4 -> {
                     isOnMainMenu = true
@@ -67,12 +68,12 @@ fun main (args: Array<String>) {
             }
         }
     } while (wantsToContinue)
-
-
-
-
 }
 
 fun drawFigure(drawable: Drawable){
     print(drawable.draw())
+}
+
+fun requestFigureDescription(describable:Describible){
+    describable.requestDescription()
 }
